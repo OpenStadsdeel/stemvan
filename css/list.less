@@ -1,0 +1,190 @@
+#content.ideasList {
+	#map {
+		height: 360px;
+		margin: 0 0 35px;
+		
+		@media @primary100 {
+			height: 250px;
+		}
+	}
+	
+	.primary {
+		#howDoesItWork,
+		#viewArchive {
+			border-radius: 4px;
+			display: block;
+			font-size: 1rem;
+			font-weight: 300;
+			line-height: 2.5em;
+			margin-right: @hMargin;
+			text-align: center;
+			text-decoration: none;
+			
+			@media @primary100 {
+				margin-right: 0;
+			}
+		}
+		#howDoesItWork {
+			background-color: #EC0000;
+			color: #FFF;
+			margin-bottom: 20px;
+		}
+		#viewArchive {
+			background-color: #f8f9f9;
+			border: 1px solid #CBCCCB;
+			color: #666767;
+			margin-top: 20px;
+		}
+		
+		h2 {
+			margin-right: @hMargin;
+			
+			@media @primary100 {
+				margin-right: 0;
+			}
+			select {
+				.appearance(none);
+				background-color: #FFF;
+				background-image: url('/img/arrow_down_black.svg');
+				background-position: center right 10px;
+				background-repeat: no-repeat;
+				background-size: 13px auto;
+				border: 2px solid #CACACA;
+				// border-radius: 4px;
+				float: right;
+				font-size: 0.8rem;
+				font-weight: bold;
+				margin-left: 5px;
+				margin-top: -4px;
+				outline: none;
+				padding: 5px 30px 5px 20px;
+				
+				&:focus {
+					background-image: url('/img/arrow_up_red.svg');
+					border-color: #EC0000;
+				}
+			}
+		}
+		
+		.tile {
+			background-color: #F6F7F7;
+			position: relative;
+			
+			// Remove clock icon for some labels.
+			&.BUSY,
+			&.ACCEPTED,
+			&.DONE {
+				.duration {
+					background-image: none;
+					font-weight: bold;
+					padding-left: 5px;
+				}
+			}
+			// Change color for some labels.
+			&.BUSY {
+				.duration {
+					background-color: #009DE6;
+				}
+			}
+			&.ACCEPTED {
+				.duration {
+					background-color: #00A03C;
+				}
+			}
+			&.DENIED {
+				opacity: 0.5;
+				
+				.duration {
+					background-color: #454545;
+					background-image: none;
+					padding-left: 5px;
+				}
+			}
+			&.CLOSED {
+				.duration {
+					background-color: #454545;
+				}
+			}
+			&.DONE {
+				.duration {
+					background-color: #9151C3;
+				}
+			}
+			&.USER {
+				background-color: #EAFADD;
+			}
+			
+			a {
+				color: #000;
+				text-decoration: none;
+			}
+			h3, p {
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			
+			.duration {
+				background-color: #EC0000;
+				background-image: url('/img/clock_white.svg');
+				background-repeat: no-repeat;
+				background-size: auto 15px;
+				background-position: left 4px center;
+				color: #FFF;
+				font-size: 0.75rem;
+				left: 0;
+				padding: 2px 5px 0 25px;
+				position: absolute;
+				top: 6px;
+			}
+			.image {
+				background-image: url('/img/placeholders/idea.jpg');
+			}
+			.info {
+				padding: 0 10px 10px;
+				
+				.progress {
+					border: 1px solid #666767;
+					border-radius: 10px;
+					margin-top: 5px;
+					overflow: hidden;
+					
+					.bar {
+						background-color: #EC0000;
+						float: left;
+						height: 12px;
+					}
+				}
+				.ideaStats {
+					margin-top: 10px;
+					
+					// Override white icons defined in `content.less`.
+					div.count {
+						&.yes {
+							background-image: url('/img/thumbsup_gray_outline.svg');
+						}
+						&.no {
+							background-image: url('/img/thumbsdown_gray_outline.svg');
+						}
+						&.arguments {
+							background-image: url('/img/argument_gray_outline.svg');
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	li.idea {
+		&.CLOSED {
+			opacity: 0.5;
+		}
+		&.DENIED {
+			opacity: 0.5;
+			text-decoration: line-through;
+		}
+		
+		span.yes { color: #61AE24 }
+		span.no { color: #DA421A }
+		span.abstain { color: #A3A3A3 }
+	}
+}

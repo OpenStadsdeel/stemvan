@@ -1,0 +1,20 @@
+{% extends 'ideas.njk' %}
+{% set pageTitle    = 'Bewerk argument' %}
+{% set contentClass = 'argument' %}
+
+{% block content %}
+<div id="errorMessage">
+	<h1>Bewerk argument</h1>
+
+	<form method="post" action="/plan/{{argument.ideaId}}/arg/{{argument.id}}/edit">
+		Beschrijving:<br>
+		<textarea name="description">{{argument.description}}</textarea><br>
+		
+		<input type="hidden" name="id" value="{{argument.id}}">
+		<input type="hidden" name="_method" value="PUT">
+		<input type="hidden" name="_csrf" value="{{csrfToken}}">
+		
+		<input type="submit" value="Opslaan">
+	</form>
+</div>
+{% endblock %}

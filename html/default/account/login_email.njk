@@ -1,0 +1,26 @@
+{% extends 'base.njk' %}
+{% set pageTitle = 'Login' %}
+
+{% block content %}
+<h1>Inloggen</h1>
+
+{% if user.isLoggedIn() %}
+	U bent al ingelogd.
+{% else %}
+	<form method="post" action="?ref={{ref}}">
+		<input type="hidden" name="_csrf" value="{{csrfToken}}">
+		
+		{% if not email %}
+			Email: <input name="email" tabindex="1" autofocus>
+			<input type="submit" value="Verder">
+		{% else %}
+			Wachtwoord: <input type="password" name="password" autofocus>
+			<input type="hidden" name="email" value="{{email}}">
+			<input type="submit" class="default" value="Inloggen">
+			
+			<p>
+			<input type="submit" name="forceToken" value="Inloggen via e-mail">
+		{% endif %}
+	</form>
+{% endif %}
+{% endblock %}

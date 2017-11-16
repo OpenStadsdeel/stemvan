@@ -1,0 +1,8 @@
+{% if complete %}Op {{SITENAME}} is een inloglink aangevraagd voor dit emailadres. Gebruik de link hieronder om automatisch in te loggen.
+{% else %}Op {{SITENAME}} is jouw emailadres gebruikt om lid te worden van de site. Gebruik de link hieronder om je registratie te voltooien.{% endif %}
+
+{{fullHost}}/account/login_token?token={{token}}&uid={{userId}}
+
+De knop is eenmalig bruikbaar en maximaal 48 uur geldig vanaf {{date | date('dddd D MMMM HH:mm:ss')}}.
+
+Geen account aangemaakt op {{SITENAME}}? Dan heeft waarschijnlijk iemand anders per ongeluk jouw emailadres ingevuld. In dat geval kun je deze email negeren; er wordt er niks mee gedaan.

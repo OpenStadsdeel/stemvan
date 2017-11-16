@@ -1,0 +1,63 @@
+#page {
+	max-width: none;
+	padding: 0;
+	
+	header {
+		img {
+			left: 0px;
+		}
+		#amsterdam {
+			left: 32px;
+		}
+		#mainMenu,
+		#quick {
+			display: none;
+		}
+	}
+	footer {
+		display: none;
+	}
+}
+
+#content.idea {
+	>.primary {
+		float: none;
+		padding-right: 0;
+		width: 100%;
+	}
+	>.secondary {
+		display: none;
+	}
+	
+	#arguments {
+		page-break-before: always;
+		
+		form.newArgument {
+			display: none;
+		}
+		div.argList {
+			float: none;
+			padding: 0 !important;
+			width: 100%;
+			
+			&.for:before,
+			&.against:before {
+				font-size: 1.5em;
+				font-weight: bold;
+			}
+			&.for:before {
+				content: 'Ik ben voor, want...';
+			}
+			&.against:before {
+				content: 'Ik ben tegen, want...';
+			}
+			
+			div.argument {
+				.user form,
+				.reply {
+					display: none;
+				}
+			}
+		}
+	}
+}

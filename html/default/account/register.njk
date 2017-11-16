@@ -1,0 +1,41 @@
+{% extends 'base.njk' %}
+
+{% set pageTitle = 'Aanmelden' %}
+{% set contentClass = 'register' %}
+
+{% block content %}
+{% if not user.isLoggedIn() %}
+	<div id="register">
+		<h1>Ik ben nieuw</h1>
+		
+		<p>
+			Je ontvangt per email een link waarmee je de registratie kan afronden.
+			Hierna ben je gelijk ingelogd voor 6 maanden of totdat je uitlogt.
+		</p>
+		
+		<form method="post" action="/account/register?ref={{ref}}">
+			<label><b>Emailadres</b> <input type="email" name="email" value="{{email_register}}" placeholder="naam@adres.nl"></label>
+			
+			<input type="hidden" name="_csrf" value="{{csrfToken}}">
+			<input type="submit" value="Registreren">
+		</form>
+	</div>
+	
+	<div id="login">
+		<hr>
+		<h1>Ik ben al lid</h1>
+		
+		<p>
+			Je ontvangt per email een link waarmee je direct kunt inloggen.
+			Hierna ben je gelijk ingelogd voor 6 maanden of totdat je uitlogt.
+		</p>
+		
+		<form method="post" action="/account/login_email?ref={{ref}}">
+			<label><b>Emailadres</b> <input type="email" name="email" value="{{email_login}}" placeholder="naam@adres.nl"></label>
+			
+			<input type="hidden" name="_csrf" value="{{csrfToken}}">
+			<input type="submit" value="Inloggen">
+		</form>
+	</div>
+{% endif %}
+{% endblock %}

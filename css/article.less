@@ -1,0 +1,144 @@
+#content.article {
+	#banner {
+		.image {
+			@media @phone {
+				height: 200px;
+			}
+		}
+	}
+	
+	.primary {
+		overflow: hidden;
+		
+		ul {
+			list-style: none;
+			padding: 0;
+			
+			li {
+				background-image: url('/img/arrow_right_black.svg');
+				background-position: top 3px left;
+				background-repeat: no-repeat;
+				background-size: auto 0.9em;
+				padding-left: 15px;
+			}
+		}
+		
+		// TODO: proclaimer and FAQ pages use styling for `#summary` and
+		//       `#article` too. Refactor?
+		#summary {
+			box-sizing: border-box;
+			float: left;
+			padding-right: @hMargin;
+			width: 33.33%;
+			
+			@media @grid50 {
+				float: none;
+				width: 100%;
+			}
+			@media @primary100 {
+				padding-right: 0;
+			}
+			
+			h3 {
+				color: #EC0000;
+			}
+			hr {
+				display: none;
+				margin: 2em 0;
+				
+				@media @grid50 {
+					display: block;
+				}
+			}
+			p:first-child {
+				color: #818181;
+				font-size: 0.7rem;
+				margin-bottom: 2em;
+			}
+			p.strong {
+				font-weight: bold;
+				
+				a {
+					color: #000;
+					text-decoration: underline;
+				}
+			}
+			// Main `ul` definition above in `.primary`.
+			ul li a {
+				color: #000;
+				font-weight: bold;
+				text-decoration: none;
+				
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+		#article {
+			box-sizing: border-box;
+			float: left;
+			padding-right: @hMargin;
+			position: relative;
+			width: 66.66%;
+			
+			@media @grid50 {
+				float: none;
+				width: 100%;
+			}
+			@media @primary100 {
+				padding-right: 0;
+			}
+			
+			p:first-of-type {
+				font-weight: bold;
+			}
+			// 
+			// `div.video` in content.less.
+			// 
+			blockquote {
+				@margin: 50px;
+				font-size: 1.875rem;
+				font-weight: bold;
+				line-height: 1.25em;
+				margin: 1em @margin;
+				position: relative;
+				
+				@media @phone {
+					@margin: 30px;
+					font-size: 1.25rem;
+					margin: 1em @margin;
+					
+					&:before {
+						left: -@margin !important;
+					}
+					&:after {
+						right: -@margin !important;
+					}
+				}
+				
+				&:before, &:after {
+					color: #EC0000;
+					font-family: Arial;
+					font-size: 2em;
+					position: absolute;
+				}
+				&:before {
+					content: '“';
+					top: 0px;
+					left: -@margin;
+				}
+				&:after {
+					content: '”';
+					bottom: -0.25em;
+					right: -@margin;
+				}
+			}
+		}
+	}
+	
+	.secondary {
+		.newIdeaBubble {
+			display: block !important;
+		}
+	}
+}

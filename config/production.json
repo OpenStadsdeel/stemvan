@@ -1,0 +1,8 @@
+{
+	"debug": false,
+	"logging": "app:*,-app:db:query",
+	
+	"express": {
+		"port": 8080
+	}
+}

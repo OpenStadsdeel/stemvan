@@ -1,0 +1,114 @@
+{
+	"siteId"          : "default",
+	"siteName"        : "De Stem van West",
+	"pageNamePostfix" : "De Stem van West — Gemeente Amsterdam",
+	
+	// Used in places where express variable `fullHost` is unavailable or
+	// unfit for use.
+	"domainName"      : "stemvanwest.amsterdam.nl",
+	// Used to display an email address to end-users on the site.
+	"emailAddress"    : "stemvanwest@amsterdam.nl",
+	
+	"infoUrls": {
+		"administration" : "https://www.amsterdam.nl/bestuur-organisatie/bestuurscommissies/bestuurscommissie-w/",
+		"facebook"       : "https://www.facebook.com/stadsdeelwest/",
+		"twitter"        : "https://twitter.com/020west"
+	},
+	
+	"debug"    : false,
+	"locale"   : "nl",
+	"logging"  : "app:*,-app:db:query",
+	"timeZone" : "Europe/Amsterdam",
+	
+	"database": {
+		"dialect"            : "mysql",
+		"host"               : "localhost",
+		"user"               : "",
+		"password"           : "",
+		"database"           : "",
+		"multipleStatements" : true
+	},
+	"express": {
+		"port": 8082
+	},
+	"sentry": {
+		"active" : true,
+		"url"    : null
+	},
+	
+	"mail": {
+		"from": "from@localhost",
+		"method": "smtp", // smtp, sendgrid
+		
+		"transport": {
+			"smtp": {
+				"pool"       : false,
+				"direct"     : false,
+				
+				"port"       : 587,
+				"host"       : "smtp.host.name",
+				"requireTLS" : true,
+				
+				"name"       : "host.name",
+				"auth"       : {
+					"user": "user",
+					"pass": "pass"
+				}
+			},
+			"sendgrid": {
+				"auth": {
+					// "api_user": "",
+					"api_key": ""
+				}
+			}
+		}
+	},
+	
+	"security": {
+		"passwordHashing": {
+			"currentMethod": "bcrypt",
+			"methods": {
+				"bcrypt": {
+					"method" : "bcrypt",
+					"cost"   : 10
+				}
+			}
+		},
+		"sessions": {
+			"onlySecure"   : true,
+			"secret"       : "e56789!ouAr-/t8ewHDyer90_",
+			// Default cookie is browser-session maxAge. This TTL is for logged in session
+			// cookies only.
+			"cookieTTL"    : 15768000000,
+			// Login token TTL in ms (default: 48hrs). These tokens are created when a user
+			// wants to log in and enters their email address.
+			"tokenTTL"     : 172800000,
+			// Property name to store user ID in `req.session`.
+			"uidProperty"  : "userId",
+			// Cached user instance TTL in seconds.
+			"userCacheTTL" : 3600
+		}
+	},
+	
+	"notifications": {
+		"admin": {
+			// Special high-frequency email notifications for site administrators.
+			// Should probably not be a personal email account.
+			"emailAddress": null
+		}
+	},
+	
+	"ideas": {
+		// Running duration in days.
+		"duration": 90,
+		// When an idea is closed, this threshold must be met or the idea
+		// will be automatically denied.
+		"minimumYesVotes": 100,
+		// Threshold in days after which votes are anonimized (IP removed).
+		// Votes that are earmarked as fraudulous are never anonimized.
+		"anonimizeThreshold": 180,
+		// Minimum number of votes before it influences the date sorting of
+		// and idea's arguments.
+		"argumentVoteThreshold": 5
+	}
+}

@@ -1,0 +1,52 @@
+{% extends 'base.njk' %}
+
+{% set pageTitle = 'Foutmelding' %}
+{% set contentClass = 'error' %}
+
+{% block content %}
+	<div id="errorMessage">
+	{% if status == 400 %}
+		Klik op 'vorige' in uw browser om het opnieuw te proberen.
+	{% elif status == 403 %}
+		<h1>{{message}}</h1>
+		
+		<p>
+			De toegang tot deze pagina is geblokkeerd omdat u niet voldoende rechten bezit.
+		</p>
+		
+		{% if not user.isLoggedIn() %}
+		<p>
+			U bent momenteel niet ingelogd. Als u normaal wel toegang heeft tot deze pagina,
+			probeert u het dan na <a href="/account/register">inloggen</a> nogmaals.
+		</p>
+		{% endif %}
+	{% elif status == 404 %}
+		<h1>{{message}}</h1>
+		
+		<p>Het bestand dat u probeert te bekijken bestaat niet (meer).</p>
+		
+		<p>Gebruik de vorige knop van uw browser of het menu bovenaan deze pagina om naar een andere pagina te navigeren.</p>
+	{% elif status == 429 %}
+		<h1>Teveel pogingen</h1>
+		
+		<p>
+			Deze pagina is beschermd tegen teveel herhaalde bezoeken. U kunt het nogmaals
+			proberen om: {{nextValidRequestDate | date('HH:mm:ss')}} (over {{retryAfter | duration}})
+		</p>
+	{% elif status == 500 %}
+		<h1>Er ging iets fout!</h1>
+		
+		<p>
+			De server heeft een fout gemaakt bij het opvragen van deze pagina. Neem a.u.b.
+			contact op via <a href="mailto:{{EMAIL}}">{{EMAIL}}</a> om het probleem te melden.
+		</p>
+		
+		<p>Excuses voor het ongemak.</p>
+		{{errorStack | nl2br | safe}}
+	{% else %}
+		<h1>{{status}}: {{friendlyStatus}}</h1>
+		
+		<p>{{errorStack | nl2br | safe}}</p>
+	{% endif %}
+	</div>
+{% endblock %}

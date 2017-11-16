@@ -1,0 +1,58 @@
+#content.admin {
+	>a {
+		display: block;
+		margin-bottom: 1em;
+		text-align: center;
+	}
+	
+	table#votes {
+		border: 1px solid black;
+		border-collapse: collapse;
+		margin: 0 auto;
+		
+		td, th {
+			border: 1px solid black;
+			padding: 2px 5px;
+		}
+		th {
+			background-color: #DCDCDC;
+			cursor: pointer;
+			padding-right: 12px;
+			
+			span {
+				display: none;
+			}
+		}
+		th:after {
+			position: absolute;
+		}
+		th.sorttable_sorted:after {
+			content: '▼';
+			font-size: 0.75em;
+		}
+		th.sorttable_sorted_reverse:after {
+			content: '▲';
+			font-size: 0.75em;
+		}
+		
+		tr {
+			td.checked {
+				cursor: pointer;
+				color: #80B823;
+				&:after {
+					content: '✓';
+				}
+			}
+			&.rejected {
+				background-color: #F9E4E1;
+				
+				td.checked {
+					color: #C53711;
+					&:after {
+						content: '✗';
+					}
+				}
+			}
+		}
+	}
+}

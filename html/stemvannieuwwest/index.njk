@@ -1,0 +1,55 @@
+{% extends 'base.njk' %}
+{% import 'includes/secondary.njk' as sec %}
+
+{% set contentClass = 'index' %}
+
+{% block content %}
+	<div id="banner">
+		<div class="image" style="background-image: url('/img/home_banner_nwest.jpg');"></div>
+		<div class="text">
+			<h2>Welkom op Stem van Nieuw-West</h2>
+			
+			Dit is jouw online meetingpoint waar je voorstellen voor je buurt kunt
+			indienen. Een nieuw plantsoen? Een dagbestedingsproject voor dak- en
+			thuislozen? Extra parkeerplekken of juist veel minder? Jij bedenkt het!
+			Voer campagne voor je plan, verzamel zoveel mogelijk stemmen en pitch jouw
+			voorstel bij het Algemeen Bestuur.
+		</div>
+	</div>
+	
+	<div class="primary">
+		{{sec.newIdeaBubble()}}
+		
+		{# Syntax formatting because `div.tile` is `display: inline-block`. #}
+		{% for article in articles
+		%}<div class="tile">
+			<a href="/artikel/{{article.id}}">
+			<div class="image" style="background-image: url('/img/articles/{{article.id}}/thumbnail.jpg');"></div>
+			<h3>{{article.title}}</h3>
+			{{article.summary}}
+			</a>
+			
+			<a href="/artikel/{{article.id}}" class="readMore">Lees meer</a>
+		</div>{%
+		endfor %}{#
+			Another weird formatting; see comment above.
+		#}<div class="tile">
+			<div class="image" style="background-image: url('/img/articles/custom_tile_west.jpg');"></div>
+			<h3>Wegens succes nu ook in stadsdeel Oost!</h3>
+			‘De Stem van...’ is in West al sinds februari 2017 online, in Centrum sinds augustus en in Oost
+			sinds oktober. Nieuws&shy;gierig naar de plan&shy;nen die bewoners en onder&shy;nemers in West en Centrum plaatsen?
+			
+			<a href="https://stemvanwest.amsterdam.nl" target="_blank" class="readMore">Bezoek de site van West</a>
+			<a href="https://stemvancentrum.amsterdam.nl" target="_blank" class="readMore">Bezoek de site van Centrum</a>
+			<a href="https://stemvanoost.amsterdam.nl" target="_blank" class="readMore">Bezoek de site van Oost</a>
+		</div>
+	</div>
+	
+	<div class="secondary">
+		{{sec.newIdeaBubble()}}
+		
+		{{sec.highlightedIdeas(highlightedIdeas)}}
+		
+		{{sec.agenda(upcomingMeetings)}}
+	</div>
+{% endblock %}

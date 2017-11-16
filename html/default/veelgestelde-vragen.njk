@@ -1,0 +1,52 @@
+{% extends 'base.njk' %}
+{% import 'includes/secondary.njk' as sec %}
+
+{% set pageTitle    = 'Veelgestelde vragen' %}
+{% set contentClass = 'article faq' %}
+
+{% block head %}
+	{{super()}}
+	
+	<style type="text/css">
+		#article h2 {
+			background-color: #E3E4E5;
+			font-size: 0.9rem;
+			line-height: 1.5em;
+			padding: 0.5em 10px;
+		}
+	</style>	
+{% endblock %}
+
+{% block content %}
+	<div class="primary">
+		<h1>Veelgestelde vragen</h1>
+		
+		<div id="summary">
+			<p>{{'2017-01-31' | date('LL')}}</p>
+			
+			<h3>In het kort</h3>
+			<p>
+				Heb je vragen over het gebruik van {{SITENAME}}? Bekijk dan
+				eerst eens of je vraag op deze pagina beantwoord wordt.
+			</p>
+			<p class="strong">
+				Staat het antwoord op je vraag er niet tussen? Stuur dan een
+				e-mail naar <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>.
+				De moderatoren van {{SITENAME}} zullen je vraag dan zo snel
+				mogelijk beantwoorden!
+			</p>
+			<hr>
+		</div>
+		
+		<div id="article">
+			{% for entry in questions %}
+			<h2>{{entry.question}}</h2>
+			{{entry.answer | safe}}
+			{% endfor %}
+		</div>
+	</div>
+	
+	<div class="secondary">
+		{{sec.newIdeaBubble()}}
+	</div>
+{% endblock %}

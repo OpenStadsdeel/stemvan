@@ -1,0 +1,51 @@
+{% extends 'base.njk' %}
+{% import 'includes/secondary.njk' as sec %}
+
+{% set activeMenu   = 'about' %}
+{% set pageTitle    = 'Het Algemeen Bestuur' %}
+{% set contentClass = 'AB' %}
+
+{% block content %}
+<div class="primary">
+	<img src="/img/ab/nwest.jpg">
+	
+	<h1>Wat is het Algemeen Bestuur?</h1>
+	
+	<p>
+		Het Algemeen Bestuur (AB) is jouw politieke vertegenwoordiging in stadsdeel
+		Nieuw-West. De gemeenteraad van Amsterdam laat bepaalde taken, zoals het
+		creëren van een prettig leefklimaat, welzijnswerk en het onderhouden van
+		straten en pleinen, over aan het AB.
+	</p>
+
+	<p>
+		Als er in het stadsdeel of in jouw buurt zaken spelen die je graag deelt met
+		de politiek, is het AB je eerste aanspreekpunt. Het AB praat ook over zaken
+		die van belang zijn voor stadsdeel Nieuw-West, maar waar de gemeenteraad over
+		gaat. In dat geval geeft het AB adviezen aan het college van B&W. Het AB
+		vergadert iedere twee weken op woensdagavond in het Tuinstadhuis. Je bent
+		altijd welkom om de vergaderingen bij te wonen en hier in te spreken. Op de
+		agenda zie de vergaderingen: https://nieuw-west.notubiz.nl/dashboard. Klik op
+		de vergadering voor meer informatie.
+		</p>
+
+	<p>
+		Buurtadoptie Stadsdeel Nieuw-West heeft XX buurten. Omdat iedere buurt andere
+		vragen en behoeftes heeft, heeft ieder AB-lid een of meerdere buurten
+		geadopteerd. Zo weet het AB snel wat er in de buurt speelt. {# Heeft u vragen
+		over de inspraak of wilt u een suggestie delen? Hieronder ziet u welk AB-lid
+		vaak bij u in de buurt is. #}
+	</p>
+</div>
+
+<div class="secondary">
+	<div class="widget">
+		<h2>Wist je dat?</h2>
+		<div id="didYouKnowBubble" class="speechBubble">
+			&ldquo;Iedere bewoner die zich aanmeldt mag 3 minuten spreken tijdens een AB vergadering.&rdquo;
+		</div>
+	</div>
+	
+	{{sec.agenda(upcomingMeetings)}}
+</div>
+{% endblock %}

@@ -1,0 +1,575 @@
+#backToList {
+	background-image: url('/img/arrow_left_black.svg');
+	background-size: contain;
+	background-position: left center;
+	background-repeat: no-repeat;
+	color: #000;
+	padding-left: 15px;
+	text-decoration: none;
+}
+
+// Title container
+// ---------------
+// Holds the idea's poster image and vote/share controls.
+#title {
+	margin-bottom: 35px;
+	overflow: hidden;
+	
+	// Idea poster image
+	// -----------------
+	.primary {
+		height: 100%;
+		height: 345px;
+		position: relative;
+		
+		@media @primary100 {
+			height: 200px;
+		}
+		
+		.image {
+			background-image: url('/img/placeholders/idea.jpg');
+			background-position: center;
+			background-size: cover;
+			bottom: 0px;
+			left: 0px;
+			margin-right: @hMargin;
+			position: absolute;
+			right: 0px;
+			top: 0px;
+			
+			@media @primary100 {
+				margin-right: 0;
+			}
+		}
+	}
+	// Vote/share controls
+	// -------------------
+	.secondary {
+		height: 345px;
+		margin-top: 0 !important;
+		overflow: visible;
+		
+		@media @primary100 {
+			height: auto;
+		}
+		
+		.controls {
+			border: 1px solid #EC0000;
+			border-left-width: 0;
+			box-sizing: border-box;
+			height: 100%;
+			margin-left: -@hMargin;
+			padding: 20px 10px 60px @hMargin;
+			position: relative;
+			
+			@media @primary100 {
+				margin-left: 0;
+				padding-left: 10px;
+				border-left-width: 1px;
+				border-top-width: 0;
+			}
+			
+			h2:first-of-type {
+				margin-top: 0;
+			}
+			
+			.vote {
+				overflow: hidden;
+				
+				button {
+					.appearance(none);
+					
+					background-color: #EC0000;
+					background-repeat: no-repeat;
+					background-size: auto 28px;
+					background-position: center left 8px;
+					border: 0;
+					box-sizing: border-box;
+					color: #FFF;
+					cursor: pointer;
+					display: block;
+					font-size: 1.1rem;
+					font-weight: bold;
+					height: 42px;
+					line-height: 42px;
+					margin: 0 0 10px 46px;
+					overflow: visible;
+					padding: 0 0 0 42px;
+					position: relative;
+					text-align: center;
+					width: calc(100% - 46px);
+					
+					&::before {
+						border: 1px solid #EC0000;
+						box-sizing: border-box;
+						color: #EC0000;
+						content: attr(data-count);
+						height: 42px;
+						left: -46px;
+						position: absolute;
+						top: 0;
+						width: 42px;
+					}
+					&[value="yes"] {
+						background-image: url('/img/thumbsup_white_big.svg');
+					}
+					&[value="no"] {
+						background-image: url('/img/thumbsdown_white_big.svg');
+					}
+					&:disabled {
+						background-color: gray;
+						cursor: default;
+					}
+					&:disabled::before {
+						border-color: gray;
+						color: gray;
+					}
+					&.selected {
+						background-color: #009E3D;
+					}
+					&.selected::before {
+						border-color: #009E3D;
+						color: #009E3D;
+					}
+				}
+			}
+			div.duration {
+				font-weight: bold;
+				margin: 20px 0px 20px 25px;
+				position: relative;
+				
+				&:before {
+					background-image: url('/img/clock_gray.svg');
+					background-repeat: no-repeat;
+					background-size: contain;
+					content: '';
+					height: 20px;
+					position: absolute;
+					left: -25px;
+					top: 0px;
+					width: 20px;
+				}
+			}
+			ul.share {
+				bottom: 20px;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				position: absolute;
+				
+				li {
+					display: inline;
+					margin: 0;
+					padding: 0;
+					
+					a {
+						background-position: center;
+						background-repeat: no-repeat;
+						background-size: contain;
+						display: inline-block;
+						font-size: 0;
+						height: 42px;
+						width: 42px;
+						
+						&.facebook { background-image: url('/img/share_facebook.svg'); }
+						&.twitter  { background-image: url('/img/share_twitter.svg'); }
+						&.email    { background-image: url('/img/share_email.svg'); }
+					}
+				}
+			}
+		}
+	}
+}
+
+// Idea content
+// ---------------
+#content.idea >.primary {
+	margin-top: 10px;
+	padding-right: @hMargin;
+	
+	@media @primary100 {
+		padding-right: 0;
+	}
+	
+	// Author information
+	// ------------------
+	#author {
+		font-style: italic;
+		margin-bottom: 20px;
+		
+		a {
+			color: inherit;
+		}
+	}
+	
+	#map {
+		height: 250px;
+	}
+	
+	// Mod break
+	// ---------
+	// Always displayed below the user content.
+	#modBreak {
+		border: 3px solid #FFE115;
+		margin: 35px 0px;
+		padding: 10px 20px;
+		position: relative;
+		
+		&::before,
+		&::after {
+			border-left: 30px solid #FFE115;
+			border-top: 30px solid transparent;
+			border-bottom: 30px solid transparent;
+			border-right: 0;
+			content: '';
+			position: absolute;
+			width: 0;
+			height: 0;
+			left: -4px;
+			bottom: -32px;
+		}
+		&::after {
+			border-left: 30px solid #FFF;
+			bottom: -24px;
+			left: 0;
+		}
+		
+		b {
+			color: #EC0000;
+		}
+		p {
+			margin: 0.5em 0 0;
+		}
+	}
+	#author + #modBreak {
+		margin-bottom: 50px;
+		margin-top: 0px;
+	}
+}
+
+// Action buttons
+// --------------
+// All idea mutation buttons on the right side of the idea's content.
+#content.idea >.secondary {
+	margin-top: 10px;
+	
+	h2:first-of-type {
+		margin-top: 0;
+	}
+	button[type="submit"],
+	select {
+		.appearance(none);
+		
+		background: 0;
+		background-color: whitesmoke;
+		border: 0;
+		border-right: 4px solid #333;
+		border-radius: 0;
+		color: #333;
+		cursor: pointer;
+		display: block;
+		font-size: 1.1em;
+		font-weight: bold;
+		height: 3rem;
+		margin-bottom: 5px;
+		margin-left: 50px;
+		overflow: visible;
+		padding: 0 0 0 6px;
+		position: relative;
+		text-align: left;
+		width: calc(100% - 50px);
+		
+		&:before {
+			background-color: #333;
+			background-repeat : no-repeat;
+			background-position: center;
+			background-size: auto 30px;
+			content: '';
+			height: 3rem;
+			left: -50px;
+			position: absolute;
+			top: 0;
+			width: 50px;
+		}
+	}
+	select {
+		border-left: 50px solid #333;
+		margin-left: 0;
+		width: 100%;
+	}
+	button.edit:before {
+		background-image: url('/img/edit_white.svg');
+	}
+	button.delete:before {
+		background-image: url('/img/delete_white.svg');
+	}
+	button.modBreak:before {
+		background-image: url('/img/argument_white.svg');
+	}
+}
+
+// Arguments
+// ---------
+// Spans the full width below the idea's content.
+#arguments {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	
+	div.argList {
+		box-sizing: border-box;
+		float: left;
+		width: 50%;
+		
+		&:nth-of-type(odd) {
+			padding-right: 15px;
+		}
+		&:nth-of-type(even) {
+			padding-left: 15px;
+		}
+		
+		@media @primary100 {
+			float: none;
+			margin-top: 20px;
+			padding: 0 !important;
+			width: 100%;
+		}
+		
+		// General form styling
+		// --------------------
+		// Both for new arguments and reactions
+		form {
+			div.charsLeft {
+				color: #9A9A9A;
+				display: none;
+				float: left;
+				font-size: 0.7rem;
+				
+				&.visible {
+					display: block;
+				}
+				
+				.min, .max {
+					display: none;
+				}
+				.min {
+					color: #EC0000;
+				}
+				.max {
+					color: #ABDE8D;
+				}
+				.visible {
+					display: block;
+				}
+			}
+			input[type="submit"]:disabled {
+				cursor: default;
+				opacity: 0.3;
+			}
+		}
+		
+		// General user styling
+		// --------------------
+		// Author styling is similar for arguments and reactions.
+		.argument,
+		.reaction {
+			p {
+				margin-top: 0.5em;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			
+			.user {
+				overflow: hidden;
+				
+				a {
+					color: inherit;
+				}
+				form {
+					float: right;
+					line-height: 0;
+					
+					input.edit,
+					input.delete {
+						.appearance(none);
+						
+						background-position: center;
+						background-repeat: no-repeat;
+						background-size: 60%;
+						cursor: pointer;
+						font-size: 0;
+						height: 20px;
+						width: 20px;
+					}
+					input.edit {
+						background-color: #333;
+						background-image: url('/img/edit_white.svg');
+						margin-left: 4px;
+					}
+					input.delete {
+						background-color: #EC0000;
+						background-image: url('/img/delete_white.svg');
+					}
+				}
+			}
+		}
+		
+		// Argument
+		// --------
+		form.newArgument {
+			margin-bottom: 10px;
+			overflow: visible;
+			text-align: right;
+			
+			textarea {
+				.appearance(none);
+				
+				border: 1px solid #B6B7BA;
+				border-radius: 0;
+				box-sizing: border-box;
+				color: #B6B7BA;
+				cursor: pointer;
+				display: block;
+				font-family: inherit;
+				font-size: 1.5em;
+				font-weight: bold;
+				height: 55px;
+				margin-bottom: 5px;
+				outline: none;
+				padding: 10px;
+				position: relative;
+				resize: none;
+				width: 100%;
+				transition: color 0.2s, font-size 0.2s, height 0.2s 0.2s;
+				
+				&:not([data-disabled]):focus {
+					color: #000;
+					cursor: auto;
+					font-size: 0.875rem;
+					font-weight: normal;
+					height: 100px;
+				}
+			}
+		}
+		.argument {
+			background-color: #F6F6F6;
+			border-left: 3px solid #043287;
+			color: #666;
+			margin-bottom: 20px;
+			overflow: hidden;
+			padding: 15px;
+			
+			a.reply {
+				float: right;
+				margin-top: 0px;
+			}
+			form.vote {
+				button {
+					.appearance(none);
+					cursor: pointer;
+					font-weight: bold;
+					outline: none;
+					padding-left: calc(1.5em + 10px);
+					position: relative;
+					
+					&:before {
+						content: '';
+						background-color: #656565;
+						background-image: url('/img/thumbsup_white.svg');
+						background-position: center;
+						background-repeat: no-repeat;
+						background-size: 75%;
+						height: 1.5em;
+						left: 0;
+						position: absolute;
+						top: -0.1em;
+						width: 1.5em;
+					}
+					&.voted:before {
+						background-color: #B1CC06;
+					}
+					&:disabled {
+						cursor: default;
+						opacity: 0.5;
+					}
+				}
+			}
+		}
+		.reaction + .argument,
+		form + .argument {
+			margin-top: 20px;
+		}
+		
+		// Reaction form
+		// -------------
+		form.newReaction {
+			margin-left: 20px;
+			.reaction();
+			
+			textarea {
+				.appearance(none);
+				
+				border: 1px solid #B6B7BA;
+				border-radius: 0;
+				color: #666;
+				display: block;
+				font-family: inherit;
+				font-size: 1em;
+				margin-bottom: 5px;
+				outline: none;
+				overflow: hidden;
+				padding: 5px 10px;
+				resize: none;
+				width: calc(100% - 22px);
+				
+				@media @phone {
+					font-size: 16px; // To prevent zooming.
+				}
+			}
+			input[type="submit"] {
+				float: right;
+				line-height: 20px;
+				padding-right: 25px;
+			}
+		}
+		
+		.reaction {
+			border-left: 3px solid #B0B0B0;
+			color: #666;
+			margin-bottom: 5px;
+			margin-left: 20px;
+			overflow: hidden;
+			padding: 10px 15px;
+			
+			p {
+				margin-bottom: 0;
+			}
+		}
+		.argument + .reaction {
+			border-top: 0;
+			margin-top: -15px;
+		}
+		
+		.noArguments {
+			background-color: #F6F6F6;
+			font-style: italic;
+			margin-bottom: 20px;
+			padding: 20px 10px;
+			text-align: center;
+		}
+	} // .argList
+}
+
+// Add/edit argument
+// -----------------
+// This is a separate page from the idea details page.
+#content.argument {
+	textarea {
+		box-sizing: border-box;
+		height: 100px;
+		width: 100%;
+	}
+	input[type="submit"] {
+		float: right;
+	}
+}

@@ -1,0 +1,34 @@
+{% extends 'base.njk' %}
+
+{% set pageTitle = 'Registratie voltooien' %}
+
+{% block content %}
+<h1>Registratie voltooien</h1>
+
+Vul a.u.b. onderstaande gegevens in om uw registratie te voltooien.
+Na deze stap kunt u gelijk gebruik maken van de website.
+
+<p>
+
+<form method="post">
+	<table>
+		<tr>
+			<td>Voornaam:</td>
+			<td><input type="text" name="firstName" value="{{user.firstName}}"> *</td>
+		</tr>
+		<tr>
+			<td>Achternaam:</td>
+			<td><input type="text" name="lastName" value="{{user.lastName}}"> *</td>
+		</tr>
+		<tr>
+			<td>Postcode:</td>
+			<td><input type="text" name="zipCode" value="{{user.zipCode}}" size="10"> *</td>
+		</tr>
+	</table>
+	
+	<p>
+	<input type="hidden" name="_csrf" value="{{csrfToken}}">
+	<input type="hidden" name="_method" value="PUT">
+	<input type="submit" value="Voltooien">
+</form>
+{% endblock %}

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<?xml encoding="utf-8" ?>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>{{SITENAME}}</title>
+		
+		<style type="text/css">
+			#outlook a {padding:0;}
+			.ExternalClass {width:100%;}
+			.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+			table td {border-collapse: collapse;}
+			table {border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }
+			#backgroundTable {margin:0; padding:0; width:100% !important; line-height: 100% !important;}
+		</style>
+	</head>
+	<body style="margin: 0; padding: 0; min-width: 100%;">
+		<table cellpadding="0" cellspacing="0" border="0" align="center" width="100%" id="backgroundTable"
+		       style="background-color: #FFF; color: #000; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px;"
+		>
+			<tr>
+				<td width="100%">
+					<!-- ### -->
+					<table class="container" width="100%" align="center" cellpadding="0" cellspacing="0" style="background-color: #FFF; margin-bottom: 40px; max-width: 740px;">
+					<tbody>
+						<tr>
+							<td width="10%">&nbsp;</td>
+							<td width="80%" style="padding-top: 20px;">
+								<img src="cid:logo" height="75" alt="Amsterdam logo" align="left" style="border: 0; max-width: 100%; display: block; -webkit-user-select: none; outline:none; text-decoration:none; -ms-interpolation-mode: bicubic;">
+							</td>
+							<td width="10%">&nbsp;</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<h2 style="color: black !important; margin-bottom: 2em;">
+								{% if complete %}
+									Inloglink aangevraagd
+								{% else %}
+									Bedankt voor je registratie
+								{% endif %}
+								</h2>
+								<p>
+									Op <a href="{{fullHost}}" target="_blank" style="color: #EC0000">{{SITENAME}}</a>
+									{% if complete %}
+										is een inloglink aangevraagd voor dit emailadres.
+										Klik op de knop hieronder om automatisch in te loggen.
+									{% else %}
+										is jouw emailadres gebruikt om lid te worden van de site.
+										Klik op de knop hieronder om je registratie te voltooien.
+									{% endif %}
+								</p>
+								<p>
+									De knop is eenmalig bruikbaar en maximaal 48 uur geldig vanaf {{date | date('dddd D MMMM HH:mm:ss')}}.
+								</p>
+								<p align="middle" style="margin: 3em 0 2em 0;">
+									<a href="{{fullHost}}/account/login_token?token={{token}}&uid={{userId}}" target="_blank"
+									   style="background-color: #EC0000; color: #FFF; font-size: 1.25em; padding: 15px 50px; text-decoration: none;"
+									>
+										<b>{{'Log in' if complete else 'Meld je aan'}}</b>
+									</a>
+								</p>
+								<p style="font-size: 0.7em; font-style: italic; margin-bottom: 5em;" align="center">
+									Of gebruik deze link in je browser:
+									<a href="{{fullHost}}/account/login_token?token={{token}}&uid={{userId}}&ref={{ref}}" target="_blank" style="color: #EC0000">
+										{{fullHost}}/account/login_token?token={{token}}&uid={{userId}}
+									</a>
+								</p>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td style="font-size: 0.7em; line-height: 150%; padding-bottom: 20px; text-align: center;">
+								Geen account aangemaakt op {{SITENAME}}? Dan heeft waarschijnlijk iemand anders per ongeluk jouw emailadres ingevuld. In dat geval kun je deze email negeren; er wordt niks mee gedaan.
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="3" height="20" style="background-color: #333;">&nbsp;</td>
+						</tr>
+					</tbody>
+					</table>
+					<!-- ### -->
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

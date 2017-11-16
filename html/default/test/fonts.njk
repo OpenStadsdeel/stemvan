@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<title>Test</title>
+	
+	<link rel="stylesheet" type="text/css" href="/css/fonts.css">
+	<style type="text/css">
+		p {
+			margin: 10px 0;
+		}
+		
+		#customTests {
+			font-family: 'Avenir_Custom';
+			font-size: 1rem;
+		}
+		#system, #custom {
+			background-color: whitesmoke;
+			float: left;
+			padding-right: 10px;
+			font-size: 2rem;
+			line-height: 1.5em;
+		}
+		#system {
+			font-family: Avenir;
+		}
+		#system p:nth-child(9n+1) { font-weight: 100; }
+		#system p:nth-child(9n+2) { font-weight: 200; }
+		#system p:nth-child(9n+3) { font-weight: 300; }
+		#system p:nth-child(9n+4) { font-weight: 400; }
+		#system p:nth-child(9n+5) { font-weight: 500; }
+		#system p:nth-child(9n+6) { font-weight: 600; }
+		#system p:nth-child(9n+7) { font-weight: 700; }
+		#system p:nth-child(9n+8) { font-weight: 800; }
+		#system p:nth-child(9n+9) { font-weight: 900; }
+		#system p:nth-child(n+10) { font-style: italic; }
+		
+		#custom {
+			font-family: 'Avenir_Custom';
+		}
+		#custom p:nth-child(9n+1) { font-weight: 100; }
+		#custom p:nth-child(9n+2) { font-weight: 200; }
+		#custom p:nth-child(9n+3) { font-weight: 300; }
+		#custom p:nth-child(9n+4) { font-weight: 400; }
+		#custom p:nth-child(9n+5) { font-weight: 500; }
+		#custom p:nth-child(9n+6) { font-weight: 600; }
+		#custom p:nth-child(9n+7) { font-weight: 700; }
+		#custom p:nth-child(9n+8) { font-weight: 800; }
+		#custom p:nth-child(9n+9) { font-weight: 900; }
+		#custom p:nth-child(n+10) { font-style: italic; }
+	</style>
+</head>
+<body>
+	<div id="customTests">
+		This is <b>bold</b>. This is <i>italic</i>.
+	</div>
+	
+	<div id="system">
+		<p>Font weight 100</p>
+		<p>Font weight 200</p>
+		<p>Font weight 300</p><!-- (light) -->
+		<p>Font weight 400</p><!-- (normal) -->
+		<p>Font weight 500</p><!-- (medium) -->
+		<p>Font weight 600</p>
+		<p>Font weight 700</p><!-- (bold) -->
+		<p>Font weight 800</p>
+		<p>Font weight 900</p><!-- (heavy) -->
+		
+		<p>Font weight 100 italic</p>
+		<p>Font weight 200 italic</p>
+		<p>Font weight 300 italic</p><!-- (light) -->
+		<p>Font weight 400 italic</p><!-- (normal) -->
+		<p>Font weight 500 italic</p><!-- (medium) -->
+		<p>Font weight 600 italic</p>
+		<p>Font weight 700 italic</p><!-- (bold) -->
+		<p>Font weight 800 italic</p>
+		<p>Font weight 900 italic</p><!-- (heavy) -->
+	</div>
+	<div id="custom">
+		<p>Font weight 100</p>
+		<p>Font weight 200</p>
+		<p>Font weight 300</p><!-- (light) -->
+		<p>Font weight 400</p><!-- (normal) -->
+		<p>Font weight 500</p><!-- (medium) -->
+		<p>Font weight 600</p>
+		<p>Font weight 700</p><!-- (bold) -->
+		<p>Font weight 800</p>
+		<p>Font weight 900</p><!-- (heavy) -->
+		
+		<p>Font weight 100 italic</p>
+		<p>Font weight 200 italic</p>
+		<p>Font weight 300 italic</p><!-- (light) -->
+		<p>Font weight 400 italic</p><!-- (normal) -->
+		<p>Font weight 500 italic</p><!-- (medium) -->
+		<p>Font weight 600 italic</p>
+		<p>Font weight 700 italic</p><!-- (bold) -->
+		<p>Font weight 800 italic</p>
+		<p>Font weight 900 italic</p><!-- (heavy) -->
+	</div>
+</body>
+</html>

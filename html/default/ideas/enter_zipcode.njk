@@ -1,0 +1,16 @@
+{% extends 'ideas.njk' %}
+{% set pageTitle = 'Vul postcode in' %}
+
+{% block content %}
+<h1>Vul postcode in</h1>
+
+Vul a.u.b. uw postcode in om uw stem uit te brengen.
+<p>
+
+<form method="post">
+	Postcode: <input type="text" name="zipCode" value="{{zipCode}}" autofocus>
+	<input type="hidden" name="opinion" value="{{opinion}}">
+	<input type="hidden" name="_csrf" value="{{csrfToken}}">
+	<input type="submit" value="Stemmen">
+</form>
+{% endblock %}

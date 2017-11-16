@@ -1,0 +1,36 @@
+{% extends 'base.njk' %}
+{% set pageTitle = 'Login' %}
+
+{% block content %}
+<div id="errorMessage">
+{% if user.isLoggedIn() %}
+	<h1>Inloggen is niet nodig</h1>
+	
+	U bent al ingelogd.
+{% elif invalidToken %}
+	<h1>Ongeldige link</h1>
+	
+	Deze login link is niet meer geldig. Mogelijke redenen:
+	<ul>
+		<li>De email is meer dan <b>48 uur geleden</b> verzonden.</li>
+		<li>Je hebt deze link reeds <b>eerder gebruikt</b> om in te loggen.</li>
+		<li>Er is een <b>technische fout</b> opgetreden.</li>
+		<li>Je hebt deze pagina bereikt <b>buiten een email link om</b>.</li>
+	</ul>
+	
+	Excuses voor het ongemak. <a href="/account/register">Vraag nogmaals een login link aan</a>.
+{% else %}
+	<h1>Inloggen</h1>
+	
+	Je kunt eenmalig inloggen met deze link. De e-mail vanuit waar je deze link hebt geopend kun je hierna verwijderen.
+	<p>
+	<form method="post">
+		<input type="hidden" name="_csrf" value="{{csrfToken}}">
+		<input type="hidden" name="token" value="{{token}}">
+		<input type="hidden" name="uid" value="{{uid}}">
+		
+		<input type="submit" value="Inloggen" style="float: right;">
+	</form>
+{% endif %}
+</div>
+{% endblock %}

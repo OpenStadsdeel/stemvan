@@ -1,0 +1,161 @@
+{% extends 'base.njk' %}
+{% import 'includes/secondary.njk' as sec %}
+
+{% set pageTitle    = 'Privacyverklaring en proclaimer' %}
+{% set contentClass = 'article proclaimer' %}
+
+{% block head %}
+	{{super()}}
+	
+	<style type="text/css">
+		#article h2 {
+			color: #EC0000;
+			font-size: 1.14em;
+		}
+		#article h3 {
+			font-size: 1em;
+		}
+	</style>	
+{% endblock %}
+
+{% block content %}
+	<div class="primary">
+		<h1>Disclaimer {{SITENAME}}</h1>
+		
+		<div id="summary">
+			<p>{{'2017-05-02' | date('LL')}}</p>
+			
+			<h3>In het kort</h3>
+			<p>
+				Via {{SITENAME}} worden persoonsgegevens verwerkt. Het Stadsdeel
+				acht een zorgvuldige omgang met persoonsgegevens van groot
+				belang. Wij gaan vertrouwelijk om met de informatie die u ons via de
+				website verstrekt en persoonlijke gegevens worden door ons dan ook
+				zorgvuldig verwerkt en beveiligd.
+			</p>
+			
+			<h3>Op deze pagina</h3>
+			<ul>
+				<li><a href="#disclaimer">Disclaimer {{SITENAME}}</a></li>
+				<li><a href="#omgang-met-persoonsgegevens">Omgang met persoonsgegevens</a></li>
+				<li><a href="#cookies">Cookies op {{SITENAME}}</a></li>
+			</ul>
+			<hr>
+		</div>
+		
+		<div id="article">
+			<p></p>
+			
+			<h2 id="disclaimer">Disclaimer {{SITENAME}}</h2>
+			<p>
+				{{SITENAME}} spant zich in voor de inhoud van deze website en doet er alles aan om de website actueel te houden en te voorzien van juiste informatie. Komt u toch iets tegen dat niet correct is, dan stellen wij uw reactie bijzonder op prijs. U kunt u contact met ons opnemen via <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>. 
+			</p>
+			<p>
+				De foto’s op deze site mogen niet zonder toestemming van de redactie gebruikt worden voor andere media. Wilt u een foto gebruiken, neem dan contact op met {{EMAIL}}.
+			</p>
+			
+			<h2 id="omgang-met-persoonsgegevens">Omgang met persoonsgegevens</h2>
+			<p>
+				Via het platform {{SITENAME}} ({{DOMAIN}}) worden persoonsgegevens verwerkt. Persoonsgegevens zijn gegevens die informatie over u geven zoals naam en e-mailadres. U wordt hiermee identificeerbaar. Bij het indienen van een voorstel via deze site, worden uw gegevens verzameld en bewaard. De regels over opslag en gebruik van persoonsgegevens staan in de <a href="http://wetten.overheid.nl/BWBR0011468/2016-01-01" target="_blank">Wet bescherming persoonsgegevens (Wbp)</a>.
+			</p>
+			
+			<h3>Gebruik van persoonsgegevens</h3>
+			<p>
+				Om te kunnen reageren op een reeds geüpload voorstel of zelf een voorstel te kunnen uploaden, moet u zich eerst registreren bij {{SITENAME}}. Wij verwerken de volgende gegevens: 
+			</p>
+			<ul>
+				<li>Naam</li>
+				<li>Postcode</li>
+				<li>Emailadres</li>
+				<li>IP-adres</li>
+			</ul>
+			<p>
+				Na registratie bewaren wij deze gegevens, zodat u niet elke keer als u een argument of voorstel wilt plaatsen, een wachtwoord hoeft in te vullen en zodat wij u kunnen contacteren in het geval uw voorstel tijdens de campagneperiode het hoogste aantal stemmen heeft behaald. In het laatste geval zult u via het door u opgegeven emailadres worden uitgenodigd uw voorstel te komen toelichten tijdens de vergadering van het Algemeen Bestuur van het stadsdeel.
+			</p>
+			<p>
+				Bij het stemmen op een voorstel registreren wij uw postcode om te zien hoeveel draagvlak een plan heeft in de buurt. 
+			</p>
+			<p>
+				Het IP adres wordt tijdelijk opgeslagen om te zorgen dat het stemmen veilig verloopt en om bij eventuele onregelmatigheden te kunnen ingrijpen.
+			</p>
+			
+			<h3>Publicatie</h3>
+			<p>
+				De volgende persoonsgegevens worden op de site gepubliceerd bij gebruik van {{SITENAME}}:
+			</p>
+			<ul>
+				<li><b>Voorstel uploaden</b>: Als u een voorstel voor uw buurt uploadt wordt de door u opgegeven naam bij het voorstel gepubliceerd. Dit heeft als doel dat uw buurtgenoten uw voorstel gemakkelijk kunnen vinden en hun stem erop uit kunnen brengen.
+				<li><b>Argument plaatsen bij voorstel</b>: Als u een argument voor of tegen plaatst bij een voorstel, gebeurt dit onder de door u opgegeven naam.
+			</ul>
+			<p>
+				U kiest zelf bij {{SITENAME}} welke gegevens u registreert. Het is mogelijk dat u te achterhalen bent, als u ervoor kiest een voorstel of argument te plaatsen. U bepaalt zelf onder welke naam u zich registreert op de site. De opgegeven naam wordt kenbaar gemaakt bij het voorstel of het argument dat u plaatst.
+			</p>
+			
+			<h3>Doelen</h3>
+			<p>
+				We verwerken de persoonsgegevens met als doel burgers invloed te geven op de agenda van het Algemeen Bestuur van het stadsdeel door plannen te uloaden voor de buurt. Het voorstel met de meeste positieve stemmen wordt automatisch geagendeerd op de vergadering van het Algemeen Bestuur.
+			</p>
+			
+			<h3>Wettelijke grondslag</h3>
+			<p>
+				Het gebruik van de genoemde soorten persoonsgegevens is noodzakelijk voor de goede vervulling van de publiekrechtelijke taak.
+			</p>
+			
+			<h3>Beveiliging</h3>
+			<p>
+				Wij gaan vertrouwelijk om met de informatie die u ons via de website verstrekt en persoonlijke gegevens worden door ons dan ook zorgvuldig verwerkt en zo goed mogelijk beveiligd. Daarvoor wordt een scala aan maatregelen ingezet, zoals maximale beperking van toegang, technische beveiligingsmaatregelen, externe tests op veiligheid, et cetera.
+			</p>
+			
+			<h3>Verstrekking aan derden</h3>
+			<p>
+				De gemeente verstrekt uw gegevens niet aan derden. Uitzonderingen:
+			</p>
+			<ul>
+				<li>Als u daar zelf uitdrukkelijke toestemming voor geeft.
+				<li>Voor statistisch onderzoek (gegevens worden geanonimiseerd).
+				<li>Als de gegevens vereist zijn op grond van de wet of vanuit een samenwerkingsverband met partners van de gemeente.
+			</ul>
+			
+			<h3>Verzoek tot inzage, correctie en verzet</h3>
+			<p>
+				Als u meer wilt weten over de verwerking van uw gegevens of het opheffen van uw registratie, stel uw vraag dan via <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>. U heeft het recht om ten allen tijde uw persoonlijke gegevens te verwijderen via uw eigen account pagina op de website. 
+			</p>
+			
+			<h3>Vernietiging</h3>
+			<p>
+				Als de persoonsgegevens niet meer noodzakelijk zijn, zullen ze zo snel mogelijk worden vernietigd. De organisatie kan besluiten één maal per jaar een scan van de website met daarop de persoonsgegevens te maken en deze te bewaren voor historische doeleinden (cultureel erfgoed).
+			</p>
+			
+			<h3>Wijzigingen in deze privacyverklaring</h3>
+			<p>
+				Wij behouden ons het recht voor om wijzigingen aan te brengen in deze privacyverklaring. Het verdient aanbeveling om deze privacyverklaring geregeld te raadplegen, zodat u van deze wijzigingen op de hoogte bent.
+			</p>
+			
+			<h2 id="cookies">Cookies op {{SITENAME}}</h2>
+			<p>
+				{{SITENAME}} maakt gebruik van cookies. Cookies zijn kleine tekstbestanden die door de website op uw computer, tablet of mobiele telefoon worden geplaatst en vervolgens door de website weer kunnen worden geraadpleegd.
+				Wij gebruiken deze cookies voor de volgende doeleinden:
+				
+				<ul>
+					<li>Uw aanmelding onthouden zodat u niet bij elk nieuw bezoek opnieuw hoeft in te loggen.</li>
+					<li>Het verbeteren van de veiligheid zodat anderen zich niet als u kunnen voordoen, bijv. bij het stemmen.</li>
+				</ul>
+				
+				{{SITENAME}} kan deze cookies niet herleiden tot een pc of individu, verzamelt via de cookies geen persoonlijke gegevens en gebruikt de verzamelde informatie niet voor andere doeleinden dan hierboven beschreven.
+			</p>
+			<p>
+				Tot slot maakt {{SITENAME}} gebruikt van software van derde partijen om extra functionaliteit te bieden:
+				
+				<ul>
+					<li>Om video's weer te geven wordt gebruik gemaakt van de Vimeo dienst. Deze partij plaatst mogelijk cookies voor analyse- en trackingsdoeleinden. Zie <a href="https://vimeo.com/cookie_list" target="_blank">Vimeo's cookie lijst</a> voor meer informatie.</li>
+					<li>{{SITENAME}} verzamelt statistieken over het gebruik van de website. Hiervoor wordt gebruik gemaakt van Google Analytics; de web-analyse-service van Google. Google Analytics verzamelt gegevens over de manier waarop onze bezoekers de website gebruiken. Denk hierbij aan bezoekersaantallen, populaire pagina’s en onderwerpen. Wij gebruiken deze informatie om de website beter af te stemmen op de behoeften van de bezoekers. Google Analytics plaatst enkel <em>first party cookies</em>; voor meer informatie zie <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage#analyticsjs" target="_blank">Google Analytics cookies</a>.
+					</li>
+				</ul>
+			</p>
+		</div>
+	</div>
+	
+	<div class="secondary">
+		{{sec.newIdeaBubble()}}
+	</div>
+{% endblock %}

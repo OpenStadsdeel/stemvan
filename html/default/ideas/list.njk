@@ -1,0 +1,210 @@
+{% extends 'ideas.njk' %}
+{% import 'includes/content.njk' as content %}
+{% import 'includes/secondary.njk' as sec %}
+
+{% set pageTitle    = 'Plannen' %}
+{% set contentClass = 'ideasList' %}
+
+{% block content %}
+	{{content.map(cookieConsent)}}
+	
+	<div id="ideas" class="primary">
+		{{sec.newIdeaBubble()}}
+		
+		<a href="/hoe-werkt-het" id="howDoesItWork">Hoe werkt het?</a>
+		
+		<h2>
+			Plannen
+			
+			<select>
+				<option {{'selected' if not sort or sort == 'date_desc'}} value="date_desc">Nieuwste eerst</option>
+				<option {{'selected' if sort == 'date_asc'}} value="date_asc">Oudste eerst</option>
+				<option {{'selected' if sort == 'votes_desc'}} value="votes_desc">Meeste stemmen</option>
+				<option {{'selected' if sort == 'votes_asc'}} value="votes_asc">Minste stemmen</option>
+			</select>
+		</h2>
+		
+		{# Weird formatting because of `display: inline-block` #}
+		{% for idea in runningIdeas
+		%}<div class="tile {{idea.status}} {{'USER' if user.id == idea.userId}}" data-poster-url="{{idea.posterImageUrl}}">
+				<a href="/plan/{{idea.id}}">
+				<div class="duration">
+				{% if idea.status == 'BUSY' %}
+					Dit plan is in behandeling
+				{% elif idea.status == 'ACCEPTED' %}
+					Dit plan wordt besproken
+				{% elif idea.status == 'DENIED' %}
+					Afgewezen
+				{% elif idea.status == 'DONE' %}
+					Afgerond
+				{% elif idea.duration > 0 %}
+					Nog {{idea.duration | duration}}
+				{% else %}
+					Afgelopen
+				{% endif %}
+				</div>
+				
+				<div class="image"></div>
+				
+				<div class="info">
+					<h3>{{idea.title}}</h3>
+					<p>{{idea.summary}}</p>
+					
+					<div class="ideaProgress">
+						<div class="progress"><div class="bar" style="width: {{idea.progress}}%;"></div></div>
+					</div>
+					
+					<div class="ideaStats">
+						<div class="count yes">{{idea.yes}}</div>
+						<div class="count no">{{idea.no}}</div>
+						<div class="count arguments">{{idea.argCount}}</div>
+					</div>
+				</div>
+				</a>
+			</div>{%
+		else %}
+			<i>Wees de eerste met een goed plan voor jouw buurt!</i>
+		{% endfor %}
+		
+		{# {% if can('ideas:archive') %}
+		<a href="/plannen/archief" id="viewArchive">Bekijk het archief</a>
+		{% endif %} #}
+	</div>
+	
+	<div class="secondary">
+		{{sec.newIdeaBubble()}}
+		
+		{{sec.highlightedIdeas(highlightedIdeas)}}
+		
+		{{sec.agenda(upcomingMeetings)}}
+	</div>
+{% endblock %}
+
+{% block scripts %}
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCauwsJ_4I3ri0rI-O5-82ncLLO_Cji8YY"></script>
+	<script src="/js/map.js"></script>
+	<script>
+	// Interactive map
+	// ---------------
+	(function() {
+		var bounds;
+		var map = initMap(document.getElementById('map'), {
+			center            : {lat: 52.3732175, lng: 4.8495996},
+			minZoom           : 13,
+			maxZoom           : 17,
+			draggable         : true,
+			keyboardShortcuts : false,
+			scrollwheel       : false,
+			zoomControl       : true
+		});
+		function boundsLimiter() {
+			google.maps.event.addListenerOnce(map, 'bounds_changed', function() {
+				if( map.getZoom() > 14 ) {
+					map.setZoom(14);
+				}
+			});
+		}
+		window.addEventListener('resize', function() {
+			if( bounds ){
+				boundsLimiter();
+				map.fitBounds(bounds);
+			}
+		});
+		
+		var ideas = [
+			// {% for idea in runningIdeas %}
+			// {% if idea.isRunning() %}
+			{id: {{idea.id}}, location: JSON.parse('{{idea.location | dump | safe}}' || null)},
+			// {% endif %}
+			// {% endfor %}
+		];
+		ideas.forEach(function( idea ) {
+			if( !idea.location ) return;
+			if( !bounds ) {
+				bounds = new google.maps.LatLngBounds();
+			}
+			
+			var point  = idea.location;
+			var marker = initMarker({
+				position : {lat: point.coordinates[0], lng: point.coordinates[1]},
+				map      : map,
+				icon     : {
+					url    : '/img/flag_small.svg',
+					size   : new google.maps.Size(22, 24),
+					anchor : new google.maps.Point(4, 21)
+				}
+			});
+			marker.addListener('click', function() {
+				window.location.href = '/plan/'+idea.id;
+			});
+			bounds.extend(marker.getPosition());
+		});
+		if( bounds ) {
+			boundsLimiter();
+			map.fitBounds(bounds);
+		}
+	})();
+	</script>
+	<script>
+	// Sorting dropdown
+	// ----------------
+	(function() {
+		var select = document.querySelector('#content > .primary > h2 select');
+		select.addEventListener('change', function() {
+			// Replace current `sort=x` with new choice.
+			var pathName = location.pathname;
+			var search   = location.search.replace(/sort=[a-z_]+/i, '') || '?';
+			location.href = pathName + search + 'sort=' + select.value + '#ideas';
+		});
+	})();
+	</script>
+	<script>
+	// Progressive thumbnail loading
+	// -----------------------------
+	(function() {
+		var tiles = $('#content > .primary > .tile:not([data-poster-url=""])');
+		
+		loadTileImages();
+		window.addEventListener('scroll', loadTileImages);
+		window.addEventListener('resize', loadTileImages);
+		
+		// Checks the current scroll position, and loads all tile image that are in
+		// the range 'top of the page' to '50% viewport height below the current viewport'.
+		function loadTileImages() {
+			// Throttle checking to once every 100 ms.
+			var now = +new Date;
+			if( now - this.last < 100 ) return;
+			this.last = now;
+			
+			var viewHeight = window.innerHeight;
+			var scrollTop  = 'pageYOffset' in window            ? window.pageYOffset :
+			                 document.documentElement.scrollTop ? document.documentElement.scrollTop :
+			                                                      document.body.scrollTop;
+			var tile;
+			for( var i = 0; tile = tiles[i]; i++ ) {
+				// Load in all tile that are in view, or are 50% of the view height
+				// below the fold.
+				var tileTop       = offsetTop(tile);
+				var isOrWasInView = tileTop < (scrollTop + viewHeight * 1.5);
+				if( isOrWasInView ) {
+					// Load actual image...
+					var img = tile.querySelector('div.image');
+					img.style.backgroundImage = 'url(\''+tile.getAttribute('data-poster-url')+'\')';
+					// ... and remove tile from the checklist.
+					tile.removeAttribute('data-poster-url');
+					tiles.splice(i, 1);
+					i--;
+				}
+			}
+		}
+		
+		// Element's vertical position, measured from the top of the page.
+		function offsetTop( el, top ) {
+			top = (top || 0) + el.offsetTop;
+			return el.offsetParent != document.body ?
+			       offsetTop(el.offsetParent, top) :
+			       top;
+		}
+	})();
+	</script>
+{% endblock %}

@@ -1,0 +1,567 @@
+#content {
+	// Flash message for errors
+	// ------------------------
+	// 
+	div.flashMessage {
+		background-color: #F6F7F7;
+		border-right: 4px solid #B1B1B1;
+		font-weight: bold;
+		margin: 10px 0px;
+		padding: 20px;
+		position: relative;
+		
+		&.error {
+			border-right-color: #EC0000;
+		}
+		&.include,
+		&.info {
+			border-right-color: #6FCA45;
+		}
+		&.success {
+			border-right-color: #FFE115;
+		}
+		h1, h2, h3 {
+			margin-top: 0;
+		}
+		a.close {
+			position: absolute;
+			right: 15px;
+			top: 15px;
+			
+			img {
+				border: 0;
+				height: 18px;
+				width: 18px;
+			}
+		}
+		
+		// Cookie consent
+		// --------------
+		// Used on register page.
+		#cookieFlash {
+			font-weight: normal;
+			
+			p.small {
+				color: rgba(0,0,0,0.7);
+				font-size: 0.9em;
+				margin: 20px 0 0;
+				text-align: center;
+			}
+		}
+	}
+	
+	// Speech bubble
+	// -------------
+	// Is used in #primary and #secondary.
+	// - In #primary only visible on smaller screens.
+	// - In #secondary only visible on larger screens.
+	.speechBubble {
+		border: 3px solid #EC0000;
+		border-radius: 12px;
+		box-sizing: border-box;
+		display: block;
+		font-size: 1.1rem;
+		font-weight: bold;
+		line-height: 1.5em;
+		// Needs `!important` because `.secondary > .widget` will override
+		// it otherwise.
+		margin-bottom: calc(1em + 28px) !important;
+		padding: 20px;
+		position: relative;
+		text-align: center;
+		
+		&:after {
+			background-image: url('/img/bubble_point.svg');
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			bottom: -28px;
+			content: '';
+			height: 28px;
+			position: absolute;
+			right: 20px;
+			width: 83px;
+		}
+	}
+	
+	// Regular links
+	// -------------
+	a {
+		color: #EC0000;
+		text-decoration: none;
+		
+		&:hover {
+			text-decoration: underline;
+		}
+		&:visited {
+			color: #7500CE;
+		}
+	}
+	// Big, button-like links
+	// ----------------------
+	a.big {
+		background-color: #EC0000;
+		border-radius: 4px;
+		color: #FFF;
+		display: block;
+		font-size: 1rem;
+		font-weight: normal;
+		margin: 10px auto 0;
+		max-width: 200px;
+		padding: 5px 10px;
+		text-align: center;
+		text-decoration: none !important;
+	}
+	// Red arrow links
+	// ---------------
+	a.readMore,
+	a.reply {
+		background-image: url('/img/arrow_right_red.svg');
+		background-repeat: no-repeat;
+		background-size: contain;
+		color: #000;
+		font-weight: 600;
+		line-height: 16px;
+		margin-top: 1em;
+		text-decoration: none;
+		display: block;
+		padding-left: 16px;
+	}
+	// Default submit button
+	// ---------------------
+	// With red arrow.
+	input[type="submit"]:not(.default) {
+		.appearance(none);
+		
+		background-color: transparent;
+		background-image: url('/img/arrow_right_whiteonred.svg');
+		background-position: center right;
+		background-repeat: no-repeat;
+		background-size: contain;
+		border: 0;
+		border-radius: 0;
+		color: #000;
+		cursor: pointer;
+		font-size: inherit;
+		font-weight: bold;
+		line-height: 32px;
+		// outline: none;
+		padding: 0 40px 0 0;
+	}
+	
+	// Idea stats
+	// ----------
+	// Used in #primary tiles on the ideas list page, and in #secondary
+	// on several pages.
+	.ideaStats {
+		text-align: center;
+		white-space: nowrap;
+		
+		div.count {
+			background-position: left top;
+			background-repeat: no-repeat;
+			box-sizing: border-box;
+			display: inline-block;
+			font-size: 0.75rem;
+			font-weight: 100;
+			height: 25px;
+			padding-left: 30px;
+			padding-right: 5px;
+			padding-top: 4px;
+				
+			&:nth-child(n+2) {
+				margin-left: 5px;
+			}
+			&.yes {
+				background-size: auto 20px;
+				background-image: url('/img/thumbsup_white.svg');
+			}
+			&.no {
+				background-position: left 5px;
+				background-size: auto 20px;
+				background-image: url('/img/thumbsdown_white.svg');
+			}
+			&.arguments {
+				background-position: left 5px;
+				background-size: auto 20px;
+				background-image: url('/img/argument_white.svg');
+			}
+		}
+	}
+	// Idea progress
+	// -------------
+	.ideaProgress {
+		margin: 10px 0;
+		position: relative;
+		
+		&:after {
+			background-image: url('/img/thumbsup_gray.svg');
+			background-repeat: no-repeat;
+			background-size: auto 18px;
+			background-position: top right 5px;
+			color: #676868;
+			content: '100';
+			font-size: 0.75rem;
+			line-height: 28px;
+			position: absolute;
+			right: -5px;
+			top: -5px;
+			width: 50px;
+		}
+	}
+	div.progress {
+		border: 1px solid #666767;
+		border-radius: 10px;
+		margin-right: 50px;
+		overflow: hidden;
+		
+		div.bar {
+			background-color: #EC0000;
+			height: 12px;
+			width: 0;
+		}
+	}
+	
+	// Big image banner above text content
+	// -----------------------------------
+	#banner {
+		margin: 0 0 35px;
+		position: relative;
+		
+		.image {
+			background-position: center;
+			background-size: cover;
+			height: 360px;
+		}
+		.text {
+			// Current only used on index page (See `index.less`).
+			// Leaving it here for possible future use.
+		}
+	}
+	
+	// Cookie consent
+	// --------------
+	.consent {
+		display: table;
+		height: 100%;
+		position: absolute;
+		width: 100%;
+		
+		>div {
+			display: table-cell;
+			height: 100%;
+			padding: 20px;
+			text-align: center;
+			vertical-align: middle;
+		}
+	}
+	
+	// Google Maps
+	// -----------
+	#map,
+	.map {
+		background-color: #EFEFEF;
+		overflow: hidden;
+		position: relative;
+	}
+	
+	// Video player
+	// ------------
+	.video {
+		background-color: #EFEFEF;
+		padding-bottom: 56.25%;
+		position: relative;
+		width: 100%;
+		
+		&.blocked {
+			background-image: url('/img/vimeo.svg');
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 90%;
+			height: 250px;
+			padding-bottom: 0;
+		}
+		
+		iframe {
+			height: 100%;
+			position: absolute;
+			width: 100%;
+		}
+	}
+	
+	// .primary and .secondary columns
+	// -------------------------------
+	.primary {
+		box-sizing: border-box;
+		float: left;
+		width: calc(75% + (@hMargin*3/4));
+		
+		@media @grid50 {
+			width: calc(66.66% + (@hMargin*2/3));
+		}
+		@media @primary100 {
+			float: none;
+			width: 100%;
+		}
+		
+		h1:first-of-type {
+			margin-top: 0;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		
+		// Speech bubble
+		// -------------
+		.newIdeaBubble {
+			display: none;
+			
+			@media @grid50 {
+				display: block;
+				margin-right: @hMargin;
+			}
+			@media @primary100 {
+				margin-right: 0;
+			}
+		}
+		
+		// Content tile
+		// ------------
+		// Is used to list news articles on the home page, and ideas
+		// on the ideas page.
+		.tile {
+			box-sizing: border-box;
+			display: inline-block;
+			margin-bottom: @vMargin;
+			margin-right: @hMargin;
+			position: relative;
+			vertical-align: top;
+			width: calc(33.33% - @hMargin);
+			
+			@media @grid50 {
+				width: calc(50% - @hMargin);
+			}
+			@media @primary100 {
+				width: calc(50% - (@hMargin / 2));
+				
+				& + div.tile:nth-of-type(2n) {
+					margin-right: 0;
+				}
+			}
+			@media @phone {
+				float: none;
+				width: 100%;
+			}
+			
+			.image {
+				background-image: url('/img/placeholders/800x600.png');
+				background-position: center;
+				background-size: cover;
+				height: 130px;
+				width: 100%;
+				
+				@media @phone {
+					height: 180px;
+				}
+			}
+			h3 {
+				font-size: 1.125em;
+				margin: 1em 0 0.5em;
+			}
+		}
+	}
+	
+	.secondary {
+		box-sizing: border-box;
+		float: right;
+		overflow: hidden;
+		width: calc(25% - (@hMargin*3/4));
+		
+		@media @grid50 {
+			width: calc(33.33% - (@hMargin*2/3));
+		}
+		@media @primary100 {
+			float: none;
+			margin-top: 20px;
+			width: 100%;
+		}
+		
+		// Secondary 'widgets'
+		// -------------------
+		// `.speechBubble`s, `#highlightedIdeas`, `#agenda`, etc...
+		>.widget {
+			margin-bottom: 15px;
+			
+			@media @primary100 {
+				float: left;
+				margin-top: 0 !important;
+				vertical-align: top;
+				width: calc(50% - (@hMargin/2));
+				
+				&:nth-of-type(odd) {
+					margin-right: @hMargin;
+				}
+			}
+			@media @phone {
+				float: none;
+				width: 100%;
+				margin-right: 0 !important;
+			}
+			
+			h2 {
+				margin-top: 0;
+			}
+		}
+		
+		// Speech bubble
+		// -------------
+		.newIdeaBubble {
+			display: block;
+			
+			@media @grid50 {
+				display: none;
+			}
+		}
+		// Highlighted ideas
+		// -----------------
+		#highlightedIdeas {
+			ul {
+				list-style-image: none;
+				list-style-position: inside;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+			li {
+				background-color: #EC0000;
+				color: #FFF;
+				padding: 10px 10px 10px 20px;
+				position: relative;
+				
+				&:before {
+					background-image: url('/img/arrow_right_white.svg');
+					background-position: top center;
+					background-repeat: no-repeat;
+					background-size: contain;
+					content: '';
+					height: 1em;
+					position: absolute;
+					top: 12px; // 10px padding-top + 2px for nice.
+					left: 0px;
+					width: 20px;
+				}
+				&:nth-last-of-type(n+2) {
+					margin-bottom: 15px;
+				}
+				a {
+					color: #FFF;
+					text-decoration: none;
+				}
+				p {
+					margin: 0;
+					max-height: 3em;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+				.ideaStats {
+					margin: 5px 0 0;
+					text-align: left;
+				}
+			}
+		}
+		// Upcoming meetings
+		// -----------------
+		#agenda {
+			.timeline {
+				background-color: whitesmoke;
+				font-size: 0.75rem;
+				hyphens: auto;
+				-webkit-hyphens: auto;
+				-moz-hyphens: auto;
+				margin-top: 10px;
+				padding: 1em 0;
+				position: relative;
+				
+				// Vertical line.
+				&::before {
+					background-color: #333;
+					content: '';
+					height: 100%;
+					left: 12px;
+					position: absolute;
+					top: 0px;
+					width: 14px;
+				}
+				
+				// Selection/Meeting events.
+				>div {
+					box-sizing: border-box;
+					margin-left: 35px;
+					padding-left: 10px;
+					position: relative;
+					vertical-align: top;
+					white-space: nowrap;
+					
+					&:not(:last-child) {
+						margin-bottom: 20px;
+					}
+					// Circle
+					&::before {
+						border-radius: 16px;
+						box-sizing: border-box;
+						content: '';
+						height: 32px;
+						position: absolute;
+						right: 100%;
+						top: -0.5rem;
+						width: 32px;
+					}
+					&.selection::before {
+						background-color: #FFF;
+						border: 6px solid #EC0000;
+					}
+					&.meeting::before {
+						background-clip: content-box;
+						background-color: #333;
+						border: 5px solid transparent;
+					}
+					
+					// Information
+					b.date {
+						display: block;
+						font-size: 1rem;
+					}
+					em {
+						display: block;
+						font-style: normal;
+						font-weight: bold;
+					}
+					ul {
+						list-style: none;
+						margin: 0;
+						padding: 0;
+						
+						li {
+							background-image: url('/img/arrow_right_red.svg');
+							background-position: top 2px left;
+							background-repeat: no-repeat;
+							background-size: auto 1em;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							padding-left: 15px;
+							
+							a {
+								color: #000;
+								text-decoration: none;
+								
+								&:hover {
+									text-decoration: underline;
+								}
+							}
+						}
+					}
+				}
+				
+			}
+		}
+	}
+}

@@ -1,0 +1,41 @@
+#content.index {
+	#banner {
+		.image {
+			@media @primary100 {
+				height: 180px;
+			}
+			@media @phone {
+				display:none;
+			}
+		}
+		
+		.text {
+			background-color: #EC0000;
+			box-sizing: border-box;
+			bottom: 20px;
+			color: #FFF;
+			left: 0px;
+			padding: 15px 30px;
+			position: absolute;
+			width: 55%;
+			
+			@media @primary100 {
+				width: 100%;
+				position: static;
+			}
+			h2 {
+				font-weight: 500;
+				margin: 0 0 0.5em;
+			}
+		}
+	}
+	
+	.primary {
+		.tile {
+			a {
+				color: #000;
+				text-decoration: none;
+			}
+		}
+	}
+}

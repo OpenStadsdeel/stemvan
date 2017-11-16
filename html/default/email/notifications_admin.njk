@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<?xml encoding="utf-8" ?>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>{{SITENAME}}</title>
+		
+		<style type="text/css">
+			#outlook a {padding:0;}
+			.ExternalClass {width:100%;}
+			.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font,
+			.ExternalClass td, .ExternalClass div {line-height: 100%;}
+			table td {border-collapse: collapse;}
+			table {border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }
+			#backgroundTable {margin:0; padding:0; width:100% !important; line-height: 100% !important;}
+		</style>
+	</head>
+	<body style="margin: 0; padding: 0; min-width: 100%;">
+		<table cellpadding="0" cellspacing="0" border="0" align="center" width="100%" id="backgroundTable"
+		       style="background-color: #FFF; color: #000;
+		              font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		              font-size: 16px;"
+		>
+			<tr>
+				<td width="100%">
+					<!-- ### -->
+					<table class="container" width="100%" align="center" cellpadding="0" cellspacing="0"
+					       style="background-color: #FFF; margin-bottom: 40px; max-width: 740px;"
+					>
+					<tbody>
+						<tr>
+							<td width="10%">&nbsp;</td>
+							<td width="80%" style="padding-top: 20px;">
+								<img src="cid:logo" height="75" alt="Amsterdam logo" align="left"
+								     style="border: 0; max-width: 100%; display: block; -webkit-user-select: none;
+								            outline:none; text-decoration:none; -ms-interpolation-mode: bicubic;"
+								>
+							</td>
+							<td width="10%">&nbsp;</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<p>
+									Er hebben recent activiteiten plaatsgevonden op {{SITENAME}} die mogelijk voor jou interessant zijn!
+								</p>
+								
+								{% if assets.idea %}
+									<h2 style="color: black !important; margin-bottom: 1em;">Ideeën</h2>
+									{% for idea in assets.idea %}
+									<p>
+										<b>{{idea.instance.title}}</b><br>
+										Door: {{idea.instance.user.firstName}} {{idea.instance.user.lastName}}<br>
+										{{'Toegevoegd op: ' if idea.action == 'created' else 'Bewerkt op: '}}{{idea.instance.updatedAt | date}}<br>
+										Link: <a href="https://{{DOMAIN}}/plan/{{idea.instance.id}}" target="_blank" style="color: #EC0000">
+											https://{{DOMAIN}}/plan/{{idea.instance.id}}
+										</a><br>
+										<br>
+										{{idea.instance.summary | nl2br | safe}}
+									</p>
+									{% endfor %}
+								{% endif %}
+								
+								{% if assets.arg %}
+									<h2 style="color: black !important; margin-bottom: 1em;">Argumenten</h2>
+									{% for arg in assets.arg %}
+									<p>
+										Door: {{arg.instance.user.firstName}} {{arg.instance.user.lastName}}<br>
+										{{'Toegevoegd op: ' if arg.action == 'created' else 'Bewerkt op: '}}{{arg.instance.updatedAt | date}}<br>
+										Link: <a href="https://{{DOMAIN}}/plan/{{arg.instance.ideaId}}" target="_blank" style="color: #EC0000">
+											https://{{DOMAIN}}/plan/{{arg.instance.ideaId}}
+										</a><br>
+										<br>
+										{{arg.instance.description | nl2br | safe}}
+									</p>
+									{% endfor %}
+								{% endif %}
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td style="font-size: 0.7em; line-height: 150%; padding-bottom: 20px; text-align: center;">
+								{# Wil je dit soort emails niet meer ontvangen? Pech gehad! #}
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="3" height="20" style="background-color: #333;">&nbsp;</td>
+						</tr>
+					</tbody>
+					</table>
+					<!-- ### -->
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

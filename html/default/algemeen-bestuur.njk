@@ -1,0 +1,48 @@
+{% extends 'base.njk' %}
+{% import 'includes/secondary.njk' as sec %}
+
+{% set activeMenu   = 'about' %}
+{% set pageTitle    = 'Het Algemeen Bestuur' %}
+{% set contentClass = 'AB' %}
+
+{% block content %}
+<div class="primary">
+	<h1>Wat is het Algemeen Bestuur?</h1>
+	<p>
+		Het Algemeen Bestuur (AB) is jouw politieke vertegenwoordiging in stadsdeel West. De gemeenteraad van Amsterdam laat bepaalde taken zoals het creëren van een prettig leefklimaat, welzijnswerk en het onderhouden van straten en pleinen over aan het AB. Als er in het stadsdeel of in uw buurt zaken spelen die u graag deelt met de politiek, is het AB uw eerste aanspreekpunt. Het AB vergadert 2 keer per maand. U bent altijd welkom om deze politieke avonden bij te wonen en in te spreken.
+	</p>
+	
+	<h1>Buurtadoptie</h1>
+	<p>
+		Stadsdeel West kent 32 buurten. Omdat iedere buurt andere vragen en behoeftes heeft, heeft ieder AB lid een of meerdere buurten geadopteerd. {# Bewoners kunnen altijd direct contact opnemen met het AB lid voor hun buurt. #} Zo weet het AB snel wat er in de buurt speelt. Heeft u vragen over de inspraak of wilt u een suggestie delen? Hieronder ziet u welk AB lid vaak bij u in de buurt is.
+	</p>
+	
+	<h1>Wie hoort er bij mijn buurt?</h1>
+	
+	{# Syntax formatting because `div.tile` is `display: inline-block`. #}
+	{% for member in members
+	%}<div class="tile">
+		<div class="image" style="background-image: url('img/ab/{{member.name}}.jpg');"></div>
+		<h3>{{member.name}}</h3>
+		<div class="neighborhoods">
+			<ul>
+			{% for name in member.neighborhood %}
+				<li>{{name}}
+			{% endfor %}
+			</ul>
+		</div>
+	</div>{%
+	endfor %}
+</div>
+
+<div class="secondary">
+	{{sec.agenda(upcomingMeetings)}}
+	
+	<div class="widget">
+		<h2>Wist je dat?</h2>
+		<div id="didYouKnowBubble" class="speechBubble">
+			&ldquo;Iedere bewoner die zich aanmeldt mag 3 minuten spreken tijdens een AB vergadering.&rdquo;
+		</div>
+	</div>
+</div>
+{% endblock %}
