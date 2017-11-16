@@ -1,0 +1,6 @@
+[submodule "lib/trix"]
+	path = lib/trix
+	url = git://github.com/basecamp/trix.git
+[submodule "lib/dropzone"]
+	path = lib/dropzone
+	url = https://github.com/enyo/dropzone.git
