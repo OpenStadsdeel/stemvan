@@ -1,4 +1,4 @@
-# Dit is een verouderde versie. Zie https://github.com/Amsterdam/openstad-monolith voor een neiuwere variant.
+### Dit is een verouderde versie. Zie https://github.com/Amsterdam/openstad-monolith voor een nieuwere variant.
 
 # De Stem van...
 This is a platform for supporting online participatory democracy, currently in development by the municipality of Amsterdam. Just as this readme, the project is still very much in development, but the steps listed below should get you started.
